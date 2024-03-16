@@ -20,10 +20,10 @@ int main()
     ll ans=0;
     while(l < n && r < m)
     {
-        int sama = 0, samb = 0, curr = a[l];
+        int same_a = 0, same_b = 0, curr = a[l];
         while(a[l] == curr && l<n)
         {
-            sama++;
+            same_a++;
             l++;
         }
         while(b[r] < curr && r < m)
@@ -32,10 +32,10 @@ int main()
         }
         while(b[r] == curr && r<m)
         {
-            samb++;
+            same_b++;
             r++;
         }
-        ans += (1LL*sama*samb);
+        ans += (1LL*same_a*same_b);
     }
     cout << ans <<"\n";
     return 0;
