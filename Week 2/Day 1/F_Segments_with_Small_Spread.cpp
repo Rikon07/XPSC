@@ -16,22 +16,30 @@ int main()
 
     while(r<n)
     {
-        ms.insert(ar[r]);
-        int mx, mn;
+        ms.insert(a[r]);
+        ll mn, mx;
         mn = *ms.begin(), mx = *ms.rbegin();
-        if((mx-mn) <= s)
+        if ((mx - mn) <= k)
         {
             ans += (r-l+1);
         }
         else
         {
-            while(l<r)
+            while(l < r)
             {
-                if((mx-mn) <= s) break;
-
-                auto it = ms.find(ar[l]);
-                ms.erase(it);
+                mn = *ms.begin(), mx = *msl.rbegin();
+                if((mx - mn) <= k)
+                {
+                    break;
+                }
+                auto it = ms.find(a[l]);
+                ml.erase(it);
                 l++;
+            }
+            mn = *ms.begin(), mx = *ms.rbegin();
+            if((mx - mn) <= k)
+            {
+                ans += (r-l+1);
             }
         }
         r++;
