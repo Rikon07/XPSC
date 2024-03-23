@@ -7,12 +7,12 @@ int main()
     ll s;
     cin >> n >> s;
 
-    vector<int> ar(n);
+    vector<ll> ar(n);
     for(int i=0; i<n; i++)
         cin >> ar[i];
 
     ll sum = 0, l=0, r=0, ans=0;
-    multiset<int> ms;
+    multiset<ll> ms;
 
     while(r<n)
     {
