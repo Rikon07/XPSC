@@ -30,3 +30,4 @@ int main()
         cout << solve(n, k) <<"\n";
     }
     return 0;
+}
