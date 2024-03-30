@@ -6,24 +6,40 @@ string solve(int n)
     string s;
     cin >> s;
     bool m = false, e = false, o = false, w = false, ok = true;
+    
     for(int i=0; i<n; i++)
     {
         if(s[i] >= 'A' && s[i] <= 'Z')
             s[i] = tolower(s[i]);
-        if(s[i] != 'm' || s[i] != 'e' || s[i] != 'o' || s[i] != 'w')
-            ok = false;
-        if(s[i] == 'm' && m == false && e == false && o == false && w == false)
-            m = true; 
-        else if(s[i] == 'e' && m == true && o == false && w == false)
+
+        if(s[i] == 'm')
+        {
+            if(e || o || w) return "NO";
+            m = true;
+        }
+        else if(s[i] == 'e')
+        {
+            if(m == false || o || w) return "NO";
             e = true;
-        else if(s[i] == 'o' && m == true && e == true && w == false)
+        }
+        else if(s[i] == 'o')
+        {
+            if(m == false || e == false || w) return "NO";
             o = true;
-        else if(s[i] == 'w' && m == true && e == true && o == true)
+        }
+        else if(s[i] == 'w')
+        {
+            if(m == false || e == false || o == false) return "NO";
             w = true;
+        }
+        else
+        {
+            return "NO";
+        }
     }
-    cout << m <<e<<o<<w<<ok<<"\n";
-    if(m && e && o && w && ok) return "YES";
-    else return "NO";
+    //cout << m << e << o << w <<"\n";
+    if(m == 0 || e == 0 || o == 0 || w == 0) return "NO";
+    else return "YES";
 }
 int main()
 {
