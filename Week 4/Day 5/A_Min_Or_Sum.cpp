@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
-ll solve(int n)
+int solve(int n)
 {
     vector<int> ar(n), bin(n);
     int ans = 0;
