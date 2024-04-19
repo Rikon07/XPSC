@@ -6,19 +6,63 @@ void solve()
 {
     string s;   cin >> s;
     int n = s.size();
-    map<char, int> mp;
+    map<char, vector<int>> mp;
     for(int i=0; i<n; i++)
     {
-        mp[s[i]] = i+1;
+        mp[s[i]].pb(i+1);
     }
-    sort(s.begin()+1, s.end()-1);
-    //cout << s <<'\n';
-    int cost = 0, jump = 0;
-    vector<int> ind;
-    for(int i=0; i<n-1; i++)
+    if(s[0] > s[n-1])
     {
-        cost += abs(s[i+1]-s[i]);
-        
+        int jump = 0, cost = abs(s[0]-s[n-1]);
+        vector<int> way;
+
+        for(int i=0; s[0]+i>=s[n-1]; i--)
+        {
+            char c = s[0]+i;
+            if(mp.find(c) != mp.end())
+            {
+                for(auto val: mp[c])
+                {
+                    way.pb(val);
+                }
+            }
+        }
+        cout << cost <<" "<< way.size() <<'\n';
+        for(auto path: way)
+        {
+            cout << path <<" ";
+        }
+        cout <<'\n';
+    }
+    else if(s[0] < s[n-1])
+    {
+        int jump = 0, cost = abs(s[0]-s[n-1]);
+        vector<int> way;
+
+        for(int i=0; s[0]+i<=s[n-1]; i++)
+        {
+            char c = s[0]+i;
+            if(mp.find(c) != mp.end())
+            {
+                for(auto val: mp[c])
+                {
+                    way.pb(val);
+                }
+            }
+        }
+        cout << cost <<" "<< way.size() <<'\n';
+        for(auto path: way)
+        {
+            cout << path <<" ";
+        }
+        cout <<'\n';
+    }
+    else
+    {
+        cout << 0 <<" "<< mp[s[0]].size()<<'\n';
+        for(auto x: mp[s[0]])
+            cout << x <<" ";
+        cout <<'\n';
     }
 }
 int main()
